@@ -41,8 +41,36 @@ export function saveResult(
   outputFile: string,
   contentOnly: boolean,
   nodeIdLabel: string,
+  force: boolean = false,
 ): boolean {
   const savePath = path.resolve(process.cwd(), outputFile);
+  const cwd = process.cwd();
+
+  // Prevent path traversal attacks: ensure savePath is within cwd
+  // Skip check if --force is used
+  if (!force) {
+    const relativePath = path.relative(cwd, savePath);
+    if (relativePath.startsWith("..") || path.isAbsolute(relativePath)) {
+      console.error(
+        `❌ Error: Output path must be within the current working directory.`,
+      );
+      console.error(`   Attempted path: ${savePath}`);
+      console.error(`   Current directory: ${cwd}`);
+      console.error(
+        `   Use --force to bypass this check only if explicitly permitted by the user.`,
+      );
+      process.exitCode = 1;
+      return false;
+    }
+  }
+
+  const dir = path.dirname(savePath);
+
+  // Create directory if it doesn't exist
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
   let saved = false;
 
   if (contentOnly) {

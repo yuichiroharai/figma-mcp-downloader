@@ -30,6 +30,7 @@ interface Options {
   clientLanguages?: string;
   clientFrameworks?: string;
   contentOnly?: boolean;
+  force?: boolean;
 }
 
 export function registerGetDesignContextCommand(program: Command): void {
@@ -65,6 +66,10 @@ export function registerGetDesignContextCommand(program: Command): void {
     .option(
       "-f, --client-frameworks <frameworks>",
       "A comma separated list of frameworks used by the client in the current context",
+    )
+    .option(
+      "--force",
+      "Allow writing outside the current working directory. Do not use unless explicitly permitted by the user.",
     )
     .action(async (outputFile: string, options: Options) => {
       const nodeId = options.nodeId;
@@ -122,6 +127,7 @@ export function registerGetDesignContextCommand(program: Command): void {
           outputFile,
           options.contentOnly ?? false,
           nodeId || "(selected)",
+          options.force ?? false,
         );
       } catch (error) {
         handleError(error);

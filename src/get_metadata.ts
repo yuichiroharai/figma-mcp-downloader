@@ -12,6 +12,7 @@ interface Options {
   clientLanguages?: string;
   clientFrameworks?: string;
   contentOnly?: boolean;
+  force?: boolean;
 }
 
 export function registerGetMetadataCommand(program: Command): void {
@@ -40,6 +41,10 @@ export function registerGetMetadataCommand(program: Command): void {
       "-f, --client-frameworks <frameworks>",
       "A comma separated list of frameworks used by the client in the current context",
     )
+    .option(
+      "--force",
+      "Allow writing outside the current working directory. Do not use unless explicitly permitted by the user.",
+    )
     .action(async (outputFile: string, options: Options) => {
       const nodeId = options.nodeId;
       const { client, transport } = await createMcpClient("metadata");
@@ -67,6 +72,7 @@ export function registerGetMetadataCommand(program: Command): void {
           outputFile,
           options.contentOnly ?? false,
           nodeId || "(selected)",
+          options.force ?? false,
         );
       } catch (error) {
         handleError(error);
