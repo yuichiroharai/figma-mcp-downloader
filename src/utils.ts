@@ -105,8 +105,8 @@ export function handleError(error: unknown): void {
 
 export interface CommonOptions {
   nodeId?: string;
-  clientLanguages?: string;
-  clientFrameworks?: string;
+  clientLanguages: string;
+  clientFrameworks: string;
   contentOnly?: boolean;
   force?: boolean;
 }
@@ -127,10 +127,12 @@ export function addCommonOptions(command: Command): Command {
     .option(
       "-l, --client-languages <languages>",
       "A comma separated list of programming languages used by the client in the current context",
+      "unknown",
     )
     .option(
       "-f, --client-frameworks <frameworks>",
       "A comma separated list of frameworks used by the client in the current context",
+      "unknown",
     )
     .option(
       "--force",
