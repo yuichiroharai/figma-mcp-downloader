@@ -1,5 +1,6 @@
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
+import { Command } from "commander";
 import * as fs from "fs";
 import * as path from "path";
 import { ToolResult } from "./types.js";
@@ -100,4 +101,39 @@ export function saveResult(
 export function handleError(error: unknown): void {
   console.error("❌ Error:", error instanceof Error ? error.message : error);
   process.exitCode = 1;
+}
+
+export interface CommonOptions {
+  nodeId?: string;
+  clientLanguages?: string;
+  clientFrameworks?: string;
+  contentOnly?: boolean;
+  force?: boolean;
+}
+
+/**
+ * 共通オプションをコマンドに追加する
+ */
+export function addCommonOptions(command: Command): Command {
+  return command
+    .option(
+      "-i, --node-id <id>",
+      'The ID of the node in the Figma document, eg. "123:456" or "123-456"',
+    )
+    .option(
+      "-c, --content-only",
+      "Save only the first text content, not the full JSON response",
+    )
+    .option(
+      "-l, --client-languages <languages>",
+      "A comma separated list of programming languages used by the client in the current context",
+    )
+    .option(
+      "-f, --client-frameworks <frameworks>",
+      "A comma separated list of frameworks used by the client in the current context",
+    )
+    .option(
+      "--force",
+      "Allow writing outside the current working directory. Do not use unless explicitly permitted by the user.",
+    );
 }
