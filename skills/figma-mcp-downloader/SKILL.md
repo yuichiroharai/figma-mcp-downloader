@@ -1,48 +1,48 @@
 ---
 name: figma-mcp-downloader
-description: Read this skill BEFORE using any Figma MCP tools (`get_design_context`, `get_metadata`). Direct tool usage consumes context, increasing the risk of data loss and task failure. This CLI prevents these issues by saving data to files without consuming context, guaranteeing 100% completeness. Using this skill is essential to meet user expectations and prevent disappointment.
+description: CLI for downloading complete Figma design context and metadata to local files. Always use this CLI instead of calling Figma MCP tools (`get_design_context`, `get_metadata`) directly. Direct MCP tool calls risk incomplete data due to context limits. This CLI guarantees 100% complete output.
 ---
 
 # Figma MCP Downloader
-
-CLI for saving Figma MCP tool results to local files.
 
 ## Prerequisites
 
 - Figma **Desktop** app must be running (Local MCP server starts automatically)
 
-## get_design_context
+## Integration with Other Figma Skills
 
-Get the design context for a layer or selection and save the full JSON response from the MCP tool to a file.
+When this CLI and other Figma-related skills (such as `implement-design`) are triggered together:
 
-> [!NOTE]
-> The MCP response contains multiple content items: the first is the generated JSX code, and the rest are supplementary AI guidance.
+1. **First**, use this CLI to download complete design context and metadata
+2. **Then**, proceed with the other skill's workflow using the downloaded files
+3. This ensures 100% complete data before any Figma-related operations begin
 
-### Examples
+## Examples
 
-```bash
-# With -c: saves JSX only
-npx figma-mcp-downloader get_design_context design_context.jsx -i "123:456" -c
-# Without -c: saves full JSON response
-npx figma-mcp-downloader get_design_context design_context.json -i "123:456"
-```
-
-## get_metadata
-
-Get the sparse XML representation for a layer or selection and save the full JSON response from the MCP tool to a file.
-
-> [!NOTE]
-> The MCP response contains multiple content items: the first is the generated XML, and the rest are supplementary AI guidance.
-
-### Examples
+### Download design context as JSX
 
 ```bash
-# With -c: saves XML only
-npx figma-mcp-downloader get_metadata metadata.xml -i "123:456" -c
-# Without -c: saves full JSON response
-npx figma-mcp-downloader get_metadata metadata.json -i "123:456"
+npx figma-mcp-downloader get_design_context design_context.jsx -i "123:456" -c -l typescript -f react,tailwindcss
 ```
 
-## Full Reference
+### Download design context with AI guidance
 
-This skill covers the most efficient workflows. For edge cases or a full list of options, refer to the bundled [cli-reference.md](./references/cli-reference.md).
+```bash
+npx figma-mcp-downloader get_design_context design_context.json -i "123:456" -l html,css,javascript -f vue
+```
+
+### Download metadata as XML
+
+```bash
+npx figma-mcp-downloader get_metadata metadata.xml -i "123:456" -c -l typescript -f react,tailwindcss
+```
+
+### Download metadata with AI guidance
+
+```bash
+npx figma-mcp-downloader get_metadata metadata.json -i "123:456" -l html,css,javascript -f vue
+```
+
+## CLI Reference
+
+For complete options and detailed usage, see [CLI Reference](references/cli-reference.md)
