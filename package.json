@@ -1,19 +1,40 @@
 {
   "name": "figma-mcp-downloader",
   "version": "1.0.0",
-  "description": "CLI tool to download design data from Figma MCP Server",
+  "description": "CLI for saving Figma MCP tool results to local files",
+  "author": "Yuichiroh Arai",
+  "license": "MIT",
   "type": "module",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "bin": {
     "figma-mcp-downloader": "dist/cli.js"
   },
-  "main": "./dist/cli.js",
   "scripts": {
     "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && tsc",
     "dev": "bun --watch src/cli.ts"
+  },
+  "keywords": [
+    "figma",
+    "mcp",
+    "cli",
+    "design",
+    "download",
+    "model-context-protocol"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuichiroharai/figma-mcp-downloader.git"
+  },
+  "homepage": "https://github.com/yuichiroharai/figma-mcp-downloader#readme",
+  "bugs": {
+    "url": "https://github.com/yuichiroharai/figma-mcp-downloader/issues"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.24.1",
