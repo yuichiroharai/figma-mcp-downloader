@@ -8,7 +8,7 @@
     "README.md"
   ],
   "bin": {
-    "figma-mcp-downloader": "./dist/cli.js"
+    "figma-mcp-downloader": "dist/cli.js"
   },
   "main": "./dist/cli.js",
   "scripts": {
