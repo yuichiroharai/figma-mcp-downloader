@@ -1,5 +1,8 @@
 # figma-mcp-downloader
 
+[![npm version](https://img.shields.io/npm/v/figma-mcp-downloader.svg)](https://www.npmjs.com/package/figma-mcp-downloader)
+[![Build](https://github.com/yuichiroharai/figma-mcp-downloader/actions/workflows/build.yml/badge.svg)](https://github.com/yuichiroharai/figma-mcp-downloader/actions/workflows/build.yml)
+
 CLI for saving Figma MCP tool results to local files.
 
 > [!IMPORTANT]
