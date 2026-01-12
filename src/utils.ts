@@ -3,7 +3,15 @@ import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/
 import { Command } from "commander";
 import * as fs from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
 import { ToolResult } from "./types.js";
+
+// Get version from package.json
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const packageJson = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "../package.json"), "utf-8"),
+);
+export const VERSION = packageJson.version;
 
 // Requires Figma desktop app to be running
 // Can be overridden with FIGMA_MCP_URL environment variable
@@ -15,7 +23,7 @@ export async function createMcpClient(
 ): Promise<{ client: Client; transport: StreamableHTTPClientTransport }> {
   const transport = new StreamableHTTPClientTransport(new URL(FIGMA_MCP_URL));
   const client = new Client(
-    { name: `${scriptName}-script`, version: "1.0.0" },
+    { name: `${scriptName}-script`, version: VERSION },
     { capabilities: {} },
   );
 
