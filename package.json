@@ -1,6 +1,6 @@
 {
   "name": "figma-mcp-downloader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI for saving Figma MCP tool results to local files",
   "author": "Yuichiroh Arai",
   "license": "MIT",
