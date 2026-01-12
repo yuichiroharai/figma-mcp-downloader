@@ -8,7 +8,7 @@ const program = new Command();
 program
   .name("figma-mcp-downloader")
   .description("CLI for saving Figma MCP tool results to local files.")
-  .version("0.1.0");
+  .version("1.0.0");
 
 registerGetDesignContextCommand(program);
 registerGetMetadataCommand(program);
