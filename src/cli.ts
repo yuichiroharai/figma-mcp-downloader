@@ -7,7 +7,7 @@ const program = new Command();
 
 program
   .name("figma-mcp-downloader")
-  .description("CLI tool to download design data from Figma MCP Server")
+  .description("CLI for saving Figma MCP tool results to local files.")
   .version("0.1.0");
 
 registerGetDesignContextCommand(program);
