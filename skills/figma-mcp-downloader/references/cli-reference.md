@@ -41,14 +41,16 @@ npx figma-mcp-downloader get_design_context <output-file> [options]
 > [!IMPORTANT]  
 > This CLI always sets `forceCode` to `true` when calling the MCP tool.
 
-| Argument/Option              | Figma MCP Parameter | Description                                             |
-| ---------------------------- | ------------------- | ------------------------------------------------------- |
-| `-a, --artifact-type <type>` | `artifactType`      | The type of artifact the user is creating or modifying. |
-| `-t, --task-type <type>`     | `taskType`          | The type of task being performed.                       |
+| Argument/Option                     | Figma MCP Parameter | Description                                                                         |
+| ----------------------------------- | ------------------- | ----------------------------------------------------------------------------------- |
+| `-a, --artifact-type <type>`        | `artifactType`      | The type of artifact the user is creating or modifying                              |
+| `-t, --task-type <type>`            | `taskType`          | The type of task being performed                                                    |
+| `-d, --dir-for-asset-writes <path>` | `dirForAssetWrites` | The directory to write image, vector and video assets to (Must be an absolute path) |
 
-> [!NOTE]  
-> Valid values for `-a`: `WEB_PAGE_OR_APP_SCREEN`, `COMPONENT_WITHIN_A_WEB_PAGE_OR_APP_SCREEN`, `REUSABLE_COMPONENT`, `DESIGN_SYSTEM`  
+> [!NOTE]
+> Valid values for `-a`: `WEB_PAGE_OR_APP_SCREEN`, `COMPONENT_WITHIN_A_WEB_PAGE_OR_APP_SCREEN`, `REUSABLE_COMPONENT`, `DESIGN_SYSTEM`
 > Valid values for `-t`: `CREATE_ARTIFACT`, `CHANGE_ARTIFACT`, `DELETE_ARTIFACT`
+> The `-d` option is required when Figma Desktop's "Image source" is set to "Download". It has no effect with "Local server".
 
 ## get_metadata
 

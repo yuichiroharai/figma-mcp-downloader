@@ -28,6 +28,7 @@ type TaskType = (typeof VALID_TASK_TYPES)[number];
 interface Options extends CommonOptions {
   artifactType?: string;
   taskType?: string;
+  dirForAssetWrites?: string;
 }
 
 export function registerGetDesignContextCommand(program: Command): void {
@@ -48,6 +49,10 @@ export function registerGetDesignContextCommand(program: Command): void {
       .option(
         "-t, --task-type <type>",
         `The type of task being performed. Valid values: ${VALID_TASK_TYPES.join(", ")}`,
+      )
+      .option(
+        "-d, --dir-for-asset-writes <path>",
+        "The directory to write image, vector and video assets to (Must be an absolute path)",
       ),
   ).action(async (outputFile: string, options: Options) => {
     const nodeId = options.nodeId;
@@ -89,6 +94,9 @@ export function registerGetDesignContextCommand(program: Command): void {
             artifactType: options.artifactType,
           }),
           ...(options.taskType && { taskType: options.taskType }),
+          ...(options.dirForAssetWrites && {
+            dirForAssetWrites: options.dirForAssetWrites,
+          }),
           ...(options.clientLanguages && {
             clientLanguages: options.clientLanguages,
           }),

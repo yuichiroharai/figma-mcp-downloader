@@ -68,14 +68,16 @@ npx figma-mcp-downloader get_design_context <output-file> [options]
 > [!IMPORTANT]  
 > This CLI always sets `forceCode` to `true` when calling the MCP tool.
 
-| Argument/Option              | Figma MCP Parameter | Description                                             |
-| ---------------------------- | ------------------- | ------------------------------------------------------- |
-| `-a, --artifact-type <type>` | `artifactType`      | The type of artifact the user is creating or modifying. |
-| `-t, --task-type <type>`     | `taskType`          | The type of task being performed.                       |
+| Argument/Option                     | Figma MCP Parameter | Description                                                                         |
+| ----------------------------------- | ------------------- | ----------------------------------------------------------------------------------- |
+| `-a, --artifact-type <type>`        | `artifactType`      | The type of artifact the user is creating or modifying.                             |
+| `-t, --task-type <type>`            | `taskType`          | The type of task being performed.                                                   |
+| `-d, --dir-for-asset-writes <path>` | `dirForAssetWrites` | The directory to write image, vector and video assets to (Must be an absolute path) |
 
-> [!NOTE]  
-> Valid values for `-a`: `WEB_PAGE_OR_APP_SCREEN`, `COMPONENT_WITHIN_A_WEB_PAGE_OR_APP_SCREEN`, `REUSABLE_COMPONENT`, `DESIGN_SYSTEM`  
+> [!NOTE]
+> Valid values for `-a`: `WEB_PAGE_OR_APP_SCREEN`, `COMPONENT_WITHIN_A_WEB_PAGE_OR_APP_SCREEN`, `REUSABLE_COMPONENT`, `DESIGN_SYSTEM`
 > Valid values for `-t`: `CREATE_ARTIFACT`, `CHANGE_ARTIFACT`, `DELETE_ARTIFACT`
+> The `-d` option is required when Figma Desktop's "Image source" is set to "Download". It has no effect with "Local server".
 
 ### Examples
 
@@ -84,6 +86,8 @@ npx figma-mcp-downloader get_design_context <output-file> [options]
 npx figma-mcp-downloader get_design_context design_context.jsx -i "123:456" -c -l typescript -f react,tailwindcss
 # Without -c: saves full JSON response
 npx figma-mcp-downloader get_design_context design_context.json -i "123:456" -l html,css,javascript -f vue
+# With -d: download assets to a directory (required when "Image source" is "Download")
+npx figma-mcp-downloader get_design_context design_context.jsx -i "123:456" -c -d /home/user/my-project/src/public/images -l typescript -f react,tailwindcss
 ```
 
 ## get_metadata

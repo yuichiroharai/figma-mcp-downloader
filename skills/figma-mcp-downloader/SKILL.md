@@ -31,6 +31,14 @@ npx figma-mcp-downloader get_design_context design_context.jsx -i "123:456" -c -
 npx figma-mcp-downloader get_design_context design_context.json -i "123:456" -l html,css,javascript -f vue
 ```
 
+### Download design context with assets
+
+Use `-d` to download image, vector, and video assets locally. Requires Figma Desktop's "Image source" to be "Download".
+
+```bash
+npx figma-mcp-downloader get_design_context design_context.jsx -i "123:456" -c -d /home/user/my-project/src/public/images -l typescript -f react,tailwindcss
+```
+
 ### Download metadata as XML
 
 ```bash
