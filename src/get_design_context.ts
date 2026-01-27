@@ -56,7 +56,7 @@ export function registerGetDesignContextCommand(program: Command): void {
       ),
   ).action(async (outputFile: string, options: Options) => {
     const nodeId = options.nodeId;
-    // Validate artifactType
+
     if (
       options.artifactType &&
       !VALID_ARTIFACT_TYPES.includes(options.artifactType as ArtifactType)
@@ -67,7 +67,6 @@ export function registerGetDesignContextCommand(program: Command): void {
       process.exit(1);
     }
 
-    // Validate taskType
     if (
       options.taskType &&
       !VALID_TASK_TYPES.includes(options.taskType as TaskType)

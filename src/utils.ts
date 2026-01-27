@@ -6,7 +6,6 @@ import * as path from "path";
 import { fileURLToPath } from "url";
 import { ToolResult } from "./types.js";
 
-// Get version from package.json
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const packageJson = JSON.parse(
   fs.readFileSync(path.join(__dirname, "../package.json"), "utf-8"),
@@ -75,7 +74,6 @@ export function saveResult(
 
   const dir = path.dirname(savePath);
 
-  // Create directory if it doesn't exist
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
@@ -119,9 +117,6 @@ export interface CommonOptions {
   force?: boolean;
 }
 
-/**
- * 共通オプションをコマンドに追加する
- */
 export function addCommonOptions(command: Command): Command {
   return command
     .option(
