@@ -130,7 +130,7 @@ export function addCommonOptions(command: Command): Command {
     )
     .option(
       "-c, --content-only",
-      "Save only the first text content, not the full JSON response",
+      "Save only the first text content (JSX code or XML), not the full JSON response",
     )
     .option(
       "-l, --client-languages <languages>",
@@ -144,6 +144,6 @@ export function addCommonOptions(command: Command): Command {
     )
     .option(
       "--force",
-      "Allow writing outside the current working directory. Do not use unless explicitly permitted by the user.",
+      "Allow writing outside the current working directory (Do not use unless explicitly permitted by the user)",
     );
 }

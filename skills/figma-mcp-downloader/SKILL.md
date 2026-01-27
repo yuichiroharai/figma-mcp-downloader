@@ -53,4 +53,4 @@ npx figma-mcp-downloader get_metadata metadata.json -i "123:456" -l html,css,jav
 
 ## CLI Reference
 
-For complete options and detailed usage, see [CLI Reference](references/cli-reference.md)
+For complete options and detailed usage, see [CLI Reference](references/cli-reference.md).

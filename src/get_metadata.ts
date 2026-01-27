@@ -14,7 +14,7 @@ export function registerGetMetadataCommand(program: Command): void {
     program
       .command("get_metadata")
       .description(
-        "Get the sparse XML representation for a layer or selection and save the full JSON response from the MCP tool to a file.",
+        "Get the sparse XML representation for a layer or selection and save the full JSON response from the MCP tool to a file",
       )
       .argument(
         "<output-file>",

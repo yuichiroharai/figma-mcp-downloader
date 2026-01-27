@@ -36,7 +36,7 @@ export function registerGetDesignContextCommand(program: Command): void {
     program
       .command("get_design_context")
       .description(
-        "Get the design context for a layer or selection and save the full JSON response from the MCP tool to a file.",
+        "Get the design context for a layer or selection and save the full JSON response from the MCP tool to a file",
       )
       .argument(
         "<output-file>",
@@ -44,11 +44,11 @@ export function registerGetDesignContextCommand(program: Command): void {
       )
       .option(
         "-a, --artifact-type <type>",
-        `The type of artifact the user is creating or modifying. Valid values: ${VALID_ARTIFACT_TYPES.join(", ")}`,
+        `The type of artifact the user is creating or modifying (Valid values: ${VALID_ARTIFACT_TYPES.join(", ")})`,
       )
       .option(
         "-t, --task-type <type>",
-        `The type of task being performed. Valid values: ${VALID_TASK_TYPES.join(", ")}`,
+        `The type of task being performed (Valid values: ${VALID_TASK_TYPES.join(", ")})`,
       )
       .option(
         "-d, --dir-for-asset-writes <path>",

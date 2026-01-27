@@ -46,13 +46,13 @@ npx figma-mcp-downloader [subcommand] <output-file> [options]
 > Options without descriptions are identical to the corresponding Figma MCP tool parameters. Refer to the Figma MCP tool schema for details.  
 > The MCP response contains multiple content items: the first is the generated JSX code or XML, and the rest are supplementary AI guidance. Use `-c` to extract only the JSX code or XML.
 
-| Argument/Option                        | Figma MCP Parameter | Description                                                         |
-| -------------------------------------- | ------------------- | ------------------------------------------------------------------- |
-| `<output-file>`                        | -                   | Output file path                                                    |
-| `-c, --content-only`                   | -                   | Save only the first text content (JSX code or XML)                  |
-| `-i, --node-id <id>`                   | `nodeId`            | The ID of the node in the Figma document.                           |
-| `-l, --client-languages <languages>`   | `clientLanguages`   | A comma separated list of programming languages used by the client. |
-| `-f, --client-frameworks <frameworks>` | `clientFrameworks`  | A comma separated list of frameworks used by the client             |
+| Argument/Option                        | Figma MCP Parameter | Description                                                                    |
+| -------------------------------------- | ------------------- | ------------------------------------------------------------------------------ |
+| `<output-file>`                        | -                   | Output file path                                                               |
+| `-c, --content-only`                   | -                   | Save only the first text content (JSX code or XML), not the full JSON response |
+| `-i, --node-id <id>`                   | `nodeId`            | The ID of the node in the Figma document                                       |
+| `-l, --client-languages <languages>`   | `clientLanguages`   | A comma separated list of programming languages used by the client             |
+| `-f, --client-frameworks <frameworks>` | `clientFrameworks`  | A comma separated list of frameworks used by the client                        |
 
 > [!NOTE]  
 > Both `-l` and `-f` options are used for logging purposes to understand which languages and frameworks are being used. Specify them based on available context, but omit them if unsure.
@@ -70,8 +70,8 @@ npx figma-mcp-downloader get_design_context <output-file> [options]
 
 | Argument/Option                     | Figma MCP Parameter | Description                                                                         |
 | ----------------------------------- | ------------------- | ----------------------------------------------------------------------------------- |
-| `-a, --artifact-type <type>`        | `artifactType`      | The type of artifact the user is creating or modifying.                             |
-| `-t, --task-type <type>`            | `taskType`          | The type of task being performed.                                                   |
+| `-a, --artifact-type <type>`        | `artifactType`      | The type of artifact the user is creating or modifying                              |
+| `-t, --task-type <type>`            | `taskType`          | The type of task being performed                                                    |
 | `-d, --dir-for-asset-writes <path>` | `dirForAssetWrites` | The directory to write image, vector and video assets to (Must be an absolute path) |
 
 > [!NOTE]
